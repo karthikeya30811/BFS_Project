@@ -15,7 +15,7 @@ Horizon Bank is a web application developed as a skill development project using
 1. Clone the repository to your local machine:
 
     ```bash
-    git clone https://github.com/Venky2004/PFSD-BFS.git
+    git clone https://github.com/karthikeya30811/BFS_Project.git
     ```
 
 2. Navigate to the project directory:
@@ -76,25 +76,4 @@ Check out the live demo of Horizon Bank [here](https://venky.pythonanywhere.com/
 
 ## Contributors
 
-<span>
-  <span>Venkata Sai Ram Reddy</span> &nbsp;
-  <a href="https://github.com/Venky2004"><img src="https://i.ibb.co/RChz8L2/github.png" alt="Github" style="width: 30px;"></a>
-  <a href="https://www.linkedin.com/in/venkata-sai-ram-reddy/"><img src="https://i.ibb.co/g7fCxtR/linkedin.png" alt="LinkedIn" style="width: 30px;"></a>
-</span>
-<br>
-<span>
-  <span>Sarvan Surya</span> &nbsp;
-  <a href="https://github.com/SarvanSurya"><img src="https://i.ibb.co/RChz8L2/github.png" alt="Github" style="width: 30px;"></a>
-  <a href="https://www.linkedin.com/in/sarvansurya/"><img src="https://i.ibb.co/g7fCxtR/linkedin.png" alt="LinkedIn" style="width: 30px;"></a>
-</span>
-<br>
-<span>
-  <span>Bala Krishna</span> &nbsp;
-  <a href="https://github.com/johndoe"><img src="https://i.ibb.co/RChz8L2/github.png" alt="Github" style="width: 30px;"></a>
-  <a href="https://linkedin.com/in/janesmith"><img src="https://i.ibb.co/g7fCxtR/linkedin.png" alt="LinkedIn" style="width: 30px;"></a>
-</span>
-<br>
 
-## Contributing
-
-Contributions are welcome! Please feel free to fork the repository and submit pull requests with your improvements.
