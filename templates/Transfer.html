@@ -1,0 +1,78 @@
+{% extends 'Navbar.html' %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Transfer</title>
+  </head>
+  {% block body %}
+  <section class="middle">
+    <div class="transfer">
+      <center><h2 style="color:white;margin: 3rem;">Transfer</h2></center>
+      <form action="transferred" method="POST">
+        {% csrf_token%}
+        <div class="inputbox" id="from_account_active">
+          <input type="number" name="from_account" value={{accountnumber}}  required readonly />
+          <span>From Account</span>
+          <i></i>
+        </div>
+        <div class="inputbox">
+          <input type="number" name="to_account" value="" required />
+          <span>To Account</span>
+          <i></i>
+        </div>
+        <div class="inputbox">
+          <input type="text" name="purpose" value="" required />
+          <span>Purpose</span>
+          <i></i>
+        </div>
+        <div class="inputbox">
+          <input type="number" name="amount" value="" required /> 
+          <span>Amount</span>
+          <i></i>
+        </div>
+        <div class="transfer_submit">
+          <input type="submit" name="" value="Submit" required />
+        </div>
+      </form>
+    </div>
+  </section>
+  <!--End of Middle-->
+  <section class="right">
+    <div class="recent-transactions">
+      <div class="header">
+        <h2>Recent Transactions</h2>
+        <a href=""
+          >More<span class="material-icons-sharp"> chevron_right </span></a
+        >
+      </div>
+      {% for transaction in data %}
+      <div class="transaction">
+        <div class="service">
+          <div class="icon bg-purple-light">
+            <span class="material-icons-sharp"> lunch_dining </span>
+          </div>
+          <div class="details">
+            <h4>{{transaction.purpose}}</h4>
+            <p>{{transaction.dateoftransaction}}</p>
+          </div>
+        </div>
+        <div class="card-details">
+          <div class="card bg-danger">
+            <img src="../static/Images/images/visa.png" alt="" />
+          </div>
+          <div class="details">
+            <p>2757</p>
+            <small class="text-muted">{{transaction.cardnumber}}</small>
+          </div>
+        </div>
+        <h4>₹{{transaction.amount}}</h4>
+      </div>
+      {% endfor %}
+      <!--end of transaction-->
+    </div>
+    <!--end of transactions-->
+  </section>
+  <h1>{{message}}</h1>
+  {% endblock %}
+</html>

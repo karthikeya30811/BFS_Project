@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Loan Application Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f2f2f2;
+      }
+      
+      h1 {
+        text-align: center;
+        margin-top: 50px;
+        color: #333;
+      }
+      
+      form {
+        margin: 50px auto;
+        max-width: 600px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+      
+      label {
+        display: block;
+        margin-bottom: 10px;
+        color: #333;
+      }
+      
+      input[type="text"],
+      input[type="date"],
+      select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+        font-size: 16px;
+      }
+      
+      select {
+        height: 40px;
+      }
+      
+      input[type="radio"] {
+        margin-right: 10px;
+      }
+      
+      button[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      
+      button[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Loan Application Form</h1>
+    <form action="appliedloan" method="POST">
+        {% csrf_token %}
+      <label for="occupation">Occupation:</label>
+      <select id="occupation" name="occupation" required>
+        <option value="">Select an option</option>
+        <option value="employed">Employed</option>
+        <option value="selfemployed">Self-employed</option>
+        <option value="student">Student</option>
+        <option value="retired">Retired</option>
+      </select>
+  
+  <label for="annualincome">Annual Income:</label>
+  <input type="text" id="annualincome" name="annualincome" required>
+  
+  <label for="annualincome">Purpose Of Loan(Define Briefly):</label>
+  <input type="text" id="annualincome" name="purpose" required>
+  
+  <label for="purpose">Type of Loan Applying for:</label>
+  <select id="purpose" name="category" required>
+    <option value="">Select an option</option>
+    <option value="education">Education</option>
+    <option value="home">Home</option>
+    <option value="vehicle">Vehicle</option>
+    <option value="business">Business</option>
+    <option value="personal">Personal</option>
+  </select>
+  
+  <label for="loanamount">Loan Amount:</label>
+  <input type="text" id="loanamount" name="loanamount" required>
+  
+  <button type="submit">Apply</button>
+</form>
+</body>
+</html>

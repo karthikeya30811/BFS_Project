@@ -1,0 +1,106 @@
+{% extends 'Navbar.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cards|Horizon</title>
+</head>
+{% block body %}
+<section class="middle">
+    <div class="transfer">
+        <center>
+            <h3 style="color:white">Select the type of card and submit to apply for card</h3> </center>
+        <form action="card_requested" method="POST">
+          {% csrf_token%}
+          <select id="category" name="category" required>
+            <option value="">Select an option</option>
+            <option value="Credit">Credit</option>
+            <option value="Debit">Debit</option>
+          </select>
+          <div class="savings_submit">
+            <input type="submit" name="" value="Submit" required />
+          </div>
+        </form>
+      </div>
+      {% if count == 0 %}
+      <center>            <h2 style="margin: 3rem;">No Cards Available</h2>
+      </center>
+    {% else %}
+    <h2>Card Details</h2>
+    {% for card in cards %}
+    <div class="col-3">
+        <div class="part carddetails">
+        <div class="card_details" style="padding: 1rem;">
+            <h3 style="margin:2rem 0 2rem 0rem">Your {{card.cardtype}} Card Details</h3>
+           <h5><span >Account No</span><span style="float: right;text-align: left;width:300px;">{{card.accountnumber}}</span></h5>
+           <h5><span >{{card.cardtype}} Card Number</span><span style="float: right;text-align: left;width:300px;">{{card.cardnumber}}</span></h5>
+           <h5><span >Name</span><span style="float: right;text-align: left;width:300px;">{{card.cardholder}}</span></h5>
+           <h5><span >CVV</span><span style="float: right;text-align: left;width:300px;">{{card.cvv}}</span></h5>
+           <h5><span >Issued Date</span><span style="float: right;text-align: left;width:300px;">{{card.issueddatetime}}</span></h5>
+           <h5><span >Expiry Date</span><span style="float: right;text-align: left;width:300px;">12/25</span></h5>
+           <h5><span >Card Status</span><span style="float: right;text-align: left;width:300px;">Active</span></h5>
+           <h5><span >Verification status</span><span style="float: right;text-align: left;width:300px;">Verified</span></h5>
+        </div>
+        </div>
+
+        {% endfor %}
+    {% endif %}
+    
+      </section>     
+            
+        <section class="right">
+            <div class="recent-transactions">
+                <div class="header">
+                    <h2>Cards</h2>
+                    <a href="">More
+                        <span class="material-icons-sharp">
+                            chevron_right
+                        </span>
+                    </a>
+                </div>
+            </div>
+           
+                <div class="cards">
+                    {% for card in cards %}
+                        <div class="card card_2">
+                            <div class="top">
+                                <div class="left"><img src="../static/Images/images/BTC.png" alt="">
+                                    <h2>{{card.cardtype}} card</h2>
+                                </div>
+                                <img src="../static/Images/images/visa.png" alt="" class="right">
+                            </div>
+                            <div class="middle">
+                                {% if card.cardtype == 'Credit' %}
+                                <h1>₹ {{card.credit_balance}}</h1>
+                                {% else %}
+                                <h1>₹ {{balance}}</h1>
+                                {% endif %}
+                                <div class="chip"><img src="../static/Images/images/card chip.png" alt=""></div>
+                            </div>
+                            <div class="bottom">
+                                <div class="left">
+                                    <small>Card Holder</small>
+                                    <h5>{{card.cardholder}}</h5>
+                                </div>
+                                <div class="right">
+                                    <div class="expiry">
+                                        <small>expiry</small>
+                                        <h5>xx/xx</h5>
+                                    </div>
+                                    <div class="cvv">
+                                        <small>CVV</small>
+                                        <h5>xxx</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <!--End of card1-->
+                </div>
+                {% endfor %}
+
+            <!--end of transactions-->
+        </section>
+{% endblock %}
+
+</html>
