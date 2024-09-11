@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django</title>
+</head>
+<style>
+    /* Styling the body */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #A020F0;
+}
+
+/* Styling the title */
+h3 {
+  color: #333;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Styling the table */
+table {
+  border-collapse: collapse;
+  margin: 50px auto;
+  background-color: #fff;
+  width: 90%;
+  max-width: 1000px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+table tr:first-child {
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+}
+
+table tr {
+  border-bottom: 1px solid #ccc;
+}
+
+table td {
+  padding: 10px;
+}
+
+table td:last-child {
+  text-align: center;
+}
+
+table td a {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+table td a:hover {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #333;
+}
+
+</style>
+<body>
+<link rel="stylesheet">
+<br><br>
+
+<h1 align="center" style="color:black">Registered List of Users</h1>
+<p><a href="{% url 'signout' %}">Log Out</a></p>
+<b><h1>Total Users Registered = {{count}} <br><br></h1></b>
+<table align="center" border="2">
+
+    <tr>
+        <td><b>ID</b></td>
+        <td><b>Full Name</b></td>
+        <td><b>Gender</b></td>
+        <td><b>DoB</b></td>
+        <td><b>Email ID</b></td>
+        <!-- <td><b>User Name</b></td> -->
+        <td><b>Location</b></td>
+        <td><b>Contact No</b></td>
+        <td><b>Aadhar</b></td>
+        <td><b>Pan</b></td>
+        <td><b>Registration Time</b></td>
+        <td><b>Profile</b></td>
+        <td><b>Action</b></td>
+    </tr>
+
+    {% for user in users  %}
+    <tr>
+         <td>{{user.id}}</td>
+         <td>{{user.first_name}} {{last_name}}</td>
+         <td>{{user.gender}}</td>
+         <td>{{user.dob}}</td>
+         <td>{{user.email}}</td>
+         <!-- <td>{{user.username}}</td> -->
+         <td>{{user.location}}  Vijayawada</td>
+         <td>{{user.phone}}</td>
+         <td>{{user.aadharnumber}}</td>
+        <td>{{user.pannumber}}</td>
+         <td>{{user.dateofcreation}}</td>
+        <td><img src="{{user.profile_pic.url}}" width="60px" height="60px"></td>
+        <td><a href="/user/deleteuser/{{user.email}}">Delete</a></td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+</body>
+</html>

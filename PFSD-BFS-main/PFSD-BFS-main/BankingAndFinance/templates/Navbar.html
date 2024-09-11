@@ -1,0 +1,362 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Horizon</title>
+    <!--Google Fonts poppins-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!---Material icons from google-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+    <!--Style sheet-->
+    <!-- <link rel="stylesheet" href="../static/Css_Files/Navbar.css " /> -->
+    <link rel="stylesheet" href="{% static 'Css_Files/Navbar.css' %}" />
+    <link rel="stylesheet" href="{% static 'Css_Files/Transfer.css' %}" />
+    <link rel="stylesheet" href="{% static 'Css_Files/Insurance.css' %}" />
+    <style>
+      .transfer{
+        background-color: black;
+        padding: 3rem;
+        border-radius: 1rem;
+        margin: 3rem;
+      }
+
+      .transfer_submit{
+        position: relative;
+        left: 200px;
+        padding: 1rem;
+        margin: 1rem;
+        place-self: center;
+        border: 2px solid aqua;
+        border-radius: 15px;
+        display: grid;
+        place-items: center;
+      }
+
+      .savings_submit{
+        position: relative;
+        left: 0px;
+        padding: 1rem;
+        margin: 1rem;
+        place-self: center;
+        border: 2px solid aqua;
+        border-radius: 15px;
+      }
+      .transfer_submit input,.savings_submit input{
+        background-color: transparent;
+        color: white;
+      }
+      #from_account_active i{
+        height: 44px;
+}
+#from_account_active span{
+  transform: translateX(-10px) translateY(-34px);
+    font-size: 0, 75em;
+}
+
+
+
+
+
+/*--------------------card.css in cards page------------------------------*/
+
+main section.right .cards {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+    margin: 2rem;
+}
+
+main section.right .cards .card {
+    background: linear-gradient(#ff796f, #bd261b);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    color: var(--color-white);
+    height: 16rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 2rem 3rem var(--color-danger-light);
+    transition: all 300ms ease;
+    min-width: 22rem;
+}
+
+main section.right .cards  .card:nth-child(2) {
+    background: linear-gradient(#7f8191, #27282f);
+    box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.2);
+}
+
+main section.right .cards .card:nth-child(3) {
+    background: linear-gradient(#5d70ff, #5719c2);
+    box-shadow: 0 2rem 3rem var(--color-primary-light);
+}
+
+main section.right .cards .card:hover {
+    box-shadow: none;
+}
+
+main section.right .card .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main section.right .card .top .left {
+    display: flex;
+    gap: 0.5rem;
+
+}
+
+main section.right .card .top .left h2 {
+    font-weight: 200;
+    font-size: 1.4rem;
+}
+
+main section.right .card .top .left img {
+    width: 2.3rem;
+    height: 2.3rem;
+    border: 1px solid var(--color-white);
+    border-radius: var(--border-radius-2);
+    padding: 0.4rem;
+}
+
+main section.right .card .top img.right {
+    width: 3.5rem
+}
+
+main section.right .card .middle {
+    display: flex;
+    justify-content: space-between;
+}
+
+main section.right .card .middle .chip {
+    width: 3.5rem;
+}
+
+main section.right .card .bottom {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+main section.right .card .bottom .right {
+    display: flex;
+    gap: 2rem;
+}
+
+
+
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <div class="container">
+        <img src="" alt="" class="logo" height="30px" width="auto" />
+        <div class="search-bar">
+          <span class="material-icons-sharp"> search </span>
+          <input type="search" placeholder="Search" />
+        </div>
+        <div class="profile-area">
+          <div class="theme-btn">
+            <span class="material-icons-sharp active"> light_mode </span>
+            <span class="material-icons-sharp"> dark_mode </span>
+          </div>
+          <div class="profile">
+            <div class="profile-photo">
+              <img src="../static/Images/images/profile-1.jpg" alt="" />
+            </div>
+            <h5>{{name}}</h5>
+            <span class="material-icons-sharp"> expand_more </span>
+          </div>
+          <button id="menu-btn">
+            <span class="material-icons-sharp"> menu </span>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <!--End of navbar-->
+    <main>
+      <aside>
+        <button id="close-btn">
+          <span class="material-icons-sharp"> close </span>
+        </button>
+        <div class="sidebar">
+          <a href="dashboard" class="active"
+            ><span class="material-icons-sharp"> dashboard </span>
+            <h4>Dashboard</h4>
+          </a>
+          <a href="transfer"
+            ><span class="material-icons-sharp"> money </span>
+            <h4>Transfer</h4>
+          </a>
+          <a href="savings"
+            ><span class="material-icons-sharp"> attach_money </span>
+            <h4>Savings</h4>
+          </a>
+          <a href="transaction"
+            ><span class="material-icons-sharp"> receipt_long </span>
+            <h4>Transactions/Analytics</h4>
+          </a>
+          <a href="cards"
+            ><span class="material-icons-sharp"> credit_card </span>
+            <h4>Cards</h4>
+          </a>
+          <a href="loans"
+            ><span class="material-icons-sharp"> real_estate_agent </span>
+            <h4>Loans</h4>
+          </a>
+          <a href="#"
+            ><span class="material-icons-sharp"> account_balance </span>
+            <h4>Insurance</h4>
+          </a>
+          <a href="#"
+            ><span class="material-icons-sharp"> help_center </span>
+            <h4>Help Center</h4>
+          </a>
+          <a href="signout"
+            ><span class="material-icons-sharp">settings</span>
+            <h4>Signout</h4>
+          </a>
+          <!--                <a href="#"><span class="material-icons-sharp">-->
+          <!--                        settings-->
+          <!--                    </span>-->
+          <!--                    <h4>Settings</h4>-->
+          <!--                </a>-->
+        </div>
+        <!---End of side bar-->
+
+        <!-- <div class="updates">
+          <span class="material-icons-sharp"> update </span>
+          <h4>Updates Available</h4>
+          <p>Security Updates</p>
+          <p>General Updates</p>
+          <a href="">Update Now</a>
+        </div> -->
+      </aside>
+      <!--End of Aside-->
+      {% block body %} {% endblock %}
+    </main>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"
+      integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="{% static 'JS_Scripts/Dashboard.js' %}"></script>
+    <script>
+      new Chart("myChart1", {
+        type: "bar",
+        data: {
+          labels: ["Debits", "Credits"],
+          datasets: [
+            {
+              backgroundColor: ["red", "green"],
+              data: [55, 495],
+            },
+          ],
+        },
+        options: {
+          title: {
+            display: true,
+            text: "Montly Stats",
+          },
+        },
+      });
+
+      var xValues = ["Music", "Food", "Travelling", "Medicienes", "Rent"];
+      var yValues = [55, 49, 4, 2, 15];
+      var barColors = ["#b91d47", "#00aba9", "#2b5797", "#e8c3b9", "#1e7145"];
+
+      new Chart("myChart", {
+        type: "pie",
+        data: {
+          labels: xValues,
+          datasets: [
+            {
+              backgroundColor: barColors,
+              data: yValues,
+            },
+          ],
+        },
+        options: {
+          title: {
+            display: true,
+            text: "World Wide Wine Production 2018",
+          },
+        },
+      });
+
+      new Chart("chart", {
+        type: "line",
+        data: {
+          labels: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+          ],
+          datasets: [
+            {
+              label: "Credit",
+              data: [64, 6, 464, 64, 646, 6, 564, 465, 46, 4, 6, 564],
+              borderColor: "red",
+              borderWidth: 2,
+            },
+            {
+              label: "Debit",
+              data: [65, 6, 464, 84, 64, 6, 464, 465, 486, 4, 86, 64],
+              borderColor: "blue",
+              borderWidth: 2,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+        },
+      });
+    </script>
+    <script>
+      const menuBtn = document.querySelector("#menu-btn");
+      const closeBtn = document.querySelector("#close-btn");
+      const sidebar = document.querySelector("aside");
+
+      menuBtn.addEventListener("click", () => {
+        sidebar.style.display = "block";
+      });
+
+      closeBtn.addEventListener("click", () => {
+        sidebar.style.display = "none";
+      });
+
+      //change theme
+      const themeBtn = document.querySelector(".theme-btn");
+
+      themeBtn.addEventListener("click", () => {
+        document.body.classList.toggle("dark-theme");
+        themeBtn.querySelector("span:first-child").classList.toggle("active");
+        themeBtn.querySelector("span:last-child").classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>

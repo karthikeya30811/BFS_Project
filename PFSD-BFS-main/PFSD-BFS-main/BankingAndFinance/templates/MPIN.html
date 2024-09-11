@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mpin</title>
+   <link rel="stylesheet" href="{% static 'Css_Files/OTPPage.css' %}">
+    <style>
+        button {
+    margin:40px;
+    margin-left:80px;
+    width: 30px;
+    height: 50px;
+    background:black;
+    outline: none;
+    border-radius:5px ;
+    border: 1px solid white;
+    line-height: 50px;
+    text-align: center;
+    font-size: 24px;
+    font-family: "Raleway", sans-serif;
+    font-weight: 200;
+    color:white;
+
+}
+
+button:focus {
+ box-shadow: 2px 2px 1px 1px aqua;
+}
+    </style>
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="prompt">
+        Enter your MPIN below to log in!
+        <br/>
+        {{message}}
+    </div>
+
+    <form method="post" class="digit-group" data-group-name="digits" autocomplete="off" action="pinconfirmation">
+        {% csrf_token%}
+        <input type="text" id="digit-1" name="digit-1" data-next="digit-2" />
+        <input type="text" id="digit-2" name="digit-2" data-next="digit-3" data-previous="digit-1" />
+        <input type="text" id="digit-3" name="digit-3" data-next="digit-4" data-previous="digit-2" />
+        <input type="text" id="digit-4" name="digit-4" data-previous="digit-3" />
+        <button type="submit"  style="width:150px">Confirm</button>
+    </form>
+    <!-- partial -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <script src="../static/JS_Scripts/OTPPages.js"></script>
+
+</body>
+
+</html>

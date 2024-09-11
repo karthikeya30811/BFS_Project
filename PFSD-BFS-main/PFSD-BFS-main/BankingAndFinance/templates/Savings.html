@@ -1,0 +1,51 @@
+{% extends 'Navbar.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Savings</title>
+</head>
+{% block body %}
+<section class="middle">
+    <div class="transfer">
+        <center><h2 style="color:white;margin: 3rem;">Savings</h2></center>
+        <form action="savings_saved" method="POST">
+          {% csrf_token%}
+          <div class="inputbox">
+            <input type="number" name="amount" value="" required /> 
+            <span>Amount</span>
+            <i></i>
+          </div>
+          <div class="savings_submit">
+            <input type="submit" name="" value="Submit" required />
+          </div>
+        </form>
+      </div>
+</section>
+            
+        <section class="right">
+            <div class="recent-transactions">
+                <div class="header">
+                    <h2>My Savings</h2>
+                    <a href="">More<span class="material-icons-sharp">
+                            chevron_right
+                        </span></a>
+                </div>
+                <div class="transaction">
+                    <div class="service">
+                        <h2>Amount Saved</h2>
+                    </div>
+                    
+                    <h4> <div class="amounts" style="scale: 1.4;">
+                    <p class="target-amount">₹ {{savings}} / ₹ {{tosave}}</p>
+      </div></h4>
+                </div>
+                <!--end of transaction-->
+                <!--end of transaction-->
+            </div>
+            <!--end of transactions-->
+        </section>
+{% endblock %}
+
+</html>

@@ -1,0 +1,93 @@
+{% extends 'Navbar.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loans|Horizon</title>
+</head>
+{% block body %}
+<section class="middle">
+    <div class="loans"><h2>Types of Loans</h2></div>
+    <div class="insurance-types">
+      <div class="insurance-type">
+        <img src="../static/Images/loans/personal.png" alt="">
+        <h3>Personal Loan</h3>
+        <p>A personal loan is an unsecured loan that can be used for any purpose, such as home improvements, debt consolidation, or emergency expenses.</p>
+        <a href="applyloans">Apply</a> <!-- add apply button -->
+      </div>
+  
+      <div class="insurance-type">
+        <img src="../static/Images/loans/home.png" alt="">
+        <h3>Home Loan</h3>
+        <p>A home loan is a secured loan that is used to purchase or refinance a home. The loan is secured by the property being purchased or refinanced.</p>
+        <a href="#">Apply</a> <!-- add apply button -->
+      </div>
+  
+      <div class="insurance-type">
+        <img src="../static/Images/loans/vehicle.png" alt="">
+        <h3>Car Loan</h3>
+        <p>An Car or 2 wheeler loan is a secured loan that is used to purchase a vehicle. The loan is secured by the vehicle being purchased.</p>
+        <a href="applyloans">Apply</a> <!-- add apply button -->
+      </div>
+  
+      <div class="insurance-type">
+        <img src="../static/Images/loans/gold.png" alt="">
+        <h3>Gold Loan</h3>
+        <p>The gold loan, also referred as a loan against gold, is a secured loan that a borrower takes from a lender in lieu of gold ornaments such as gold jewelry.</p>
+        <a href="#">Apply</a> <!-- add apply button -->
+      </div>
+  
+      <div class="insurance-type">
+        <img src="../static/Images/loans/education.png" alt="">
+        <h3>Education Loan</h3>
+        <p>Going abroad for higher studies? Whatever be your reason for higher studies, it’s understood that higher education is often very expensive, with the rising cost of education. But that shouldn’t stop you!</p>
+        <a href="#">Apply</a> <!-- add apply button -->
+      </div>
+  
+      <div class="insurance-type">
+        <img src="../static/Images/loans/health.png" alt="">
+        <h3>Loan Against Shares</h3>
+        <p>Leverage your investments in shares for loans to meet unforeseen expenses!!Avail of loans against your shares to enable you to meet contingencies, personal needs or even for subscribing to rights or new issue of shares.</p>
+        <a href="#">Apply</a> <!-- add apply button -->
+      </div>
+      </section>     
+            
+        <section class="right">
+            <div class="recent-transactions">
+                <div class="header">
+                    <h2>Recent Loans</h2>
+                    <a href="">More<span class="material-icons-sharp">
+                            chevron_right
+                        </span></a>
+                </div>
+                {% for loan in data %}
+                <div class="transaction">
+                    <div class="service">
+                        <div class="icon bg-purple-light">
+                            <span class="material-icons-sharp">
+                                school
+                            </span>
+                        </div>
+                        <div class="details">
+                            <h4>{{loan.loan_category}}</h4>
+                            <p>20.11.2021</p>
+                        </div>
+                    </div>
+                    <div class="card-details">
+                        <div class="card bg-purple"><h3 style="color: aliceblue;">{{loan.interest}}%</h3></div>
+                        <div class="details">
+                            <p>{{loan.totalPayment}}</p>
+                            <small class="text-muted">{{loan.status}}</small>
+                        </div>
+                    </div>
+                    <h4>₹ {{loan.monthlyPayment}}</h4>
+                </div>
+
+                {% endfor %}
+            </div>
+            <!--end of transactions-->
+        </section>
+{% endblock %}
+
+</html>

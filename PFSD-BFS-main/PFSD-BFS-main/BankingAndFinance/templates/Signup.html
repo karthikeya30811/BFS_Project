@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign up</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+      * {
+        font-family: "Poppins", sans-serif;
+        color: white;
+        font-weight: 300;
+      }
+
+      body {
+        background-color:purple ;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+      }
+      .inputbox{
+        position: relative;
+        width: 296px;
+      }
+
+      .inputbox input{
+        position: relative;
+        width: 100%;
+        padding: 20px 10px 10px;
+        background: transparent;
+        outline: none;
+        box-shadow: none;
+        border: none;
+        color: white;
+        font-size: 1em;
+        letter-spacing: 0.05em;
+        transition: 0.5s;
+        z-index: 10;
+      }
+
+      .inputbox span{
+        position: absolute;
+        left: 0;
+        bottom: 0px;
+        padding: 20px 10px 10px;
+        font-size: 1em;
+        color: #ffff;
+        letter-spacing: 00.05em;
+        transition: 0.5s;
+        pointer-events: none;
+      }
+
+      .inputbox input:valid ~ span,
+      .inputbox input:focus ~ span {
+        color: white;
+        transform: translateX(-10px) translateY(-34px);
+        font-size: 0, 75em;
+      }
+
+      .inputbox i {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        transition: 0.5s;
+        pointer-events: none;
+        z-index: 9;
+      }
+
+      .inputbox input:valid ~ i,
+      .inputbox input:focus ~ i {
+        height: 44px;
+      }
+
+      input[type="date"]:required:invalid::-webkit-datetime-edit {
+        color: transparent;
+      }
+      input[type="date"] {
+        width: 90%;
+      }
+
+      input[type="date"]:focus:invalid::-webkit-datetime-edit {
+        color: white;
+        font-variant: small-caps;
+        font-weight: 800;
+        font-size: 15px;
+      }
+      input[type="number"]:required:invalid::-webkit-input-placeholder {
+        color: transparent;
+      }
+      input[type="number"]:focus:invalid::-webkit-input-placeholder {
+        color: white;
+      }
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        place-items: center;
+        scale: 1;
+      }
+      .signup {
+        display: grid;
+        place-items: center;
+      }
+      .signupform {
+        margin: 1rem;
+        padding: 1rem;
+      }
+
+      .inputradios {
+        display: flex;
+        gap: 1rem;
+        padding: 1rem;
+        transform: translateX(100px);
+      }
+
+      input[type="file"] {
+        color: #23242a;
+      }
+
+      .custom-file-input::-webkit-file-upload-button {
+        visibility: hidden;
+      }
+      .custom-file-input::before {
+        content: "Select file";
+        color: white;
+        display: inline-block;
+        background: linear-gradient(top, #f9f9f9, #e3e3e3);
+        border: 1px solid #999;
+        border-radius: 3px;
+        padding: 10px 5px;
+        outline: none;
+        white-space: nowrap;
+        cursor: pointer;
+        font-weight: 100;
+        font-size: 10pt;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .custom-file-input:hover::before {
+        border-color: black;
+      }
+      .custom-file-input:active::before {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .signuphead {
+        margin: 2rem;
+      }
+
+      .inputfile {
+        transform: translateX(30px);
+        display: flex;
+        align-items: center;
+      }
+
+      .submit{
+        border:1px solid #999 ;
+        color: white;
+        background-color: rgb(76, 190, 239);
+        width: auto;
+        padding: 1rem;
+        align-items: center;
+        border-radius:10px;
+        scale:1.2;
+        margin: 1rem;
+      }
+      .submit:hover{
+           background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="signup">
+      <div class="signupform">
+        <center>
+          <div class="signuphead"><h1>Sign Up</h1></div>
+        </center>
+        {{message}}
+        <form method="POST" action="registered">
+          {% csrf_token %}
+          <div class="inputbox">
+            <input type="text" name="first_name" value="" required />
+            <span>First Name</span>
+            <i></i>
+          </div>
+          <div class="inputbox">
+            <input type="text" name="last_name" value="" required />
+            <span>Last Name</span>
+            <i></i>
+          </div>
+          <div class="inputbox">
+            <input type="text" name="father_name" value="" required />
+            <span>Father Name</span>
+            <i></i>
+          </div>
+          <div class="inputbox">
+            <input type="text" name="mother_name" value="" required />
+            <span>Mother Name</span>
+            <i></i>
+          </div>
+          <div class="inputbox">
+            <input type="date" name="dob" id="" required />
+            <span>Date of Birth</span>
+            <i></i>
+          </div>
+          <div class="inputbox">
+            <input
+              type="number"
+              name="phone"
+              placeholder="+91-*******"
+              required
+            />
+            <span>Mobile Number</span>
+            <i></i>
+          </div>
+          <div class="inputbox">
+            <input type="text" name="pannumber" id="" value="" required />
+            <span>Pan Number</span>
+            <i></i>
+          </div>
+          <div class="inputbox">
+            <input type="number" name="aadharnumber" id="" value="" required />
+            <span>Aadhar Number</span>
+            <i></i>
+          </div>
+          <div class="inputbox">
+            <input type="email" name="email" value="" required />
+            <span>Email Address</span>
+            <i></i>
+          </div>
+          <div class="inputbox">
+            <input type="number" name="pincode" value="" required />
+            <span>PIN CODE</span>
+            <i></i>
+          </div>
+          <div class="inputbox">
+            <input type="text" name="gender" value="" required />
+            <span>Gender</span>
+            <i></i>
+          </div>
+
+          <!--          <div class="inputbox">-->
+          <!--            <input type="text" name="gender" id="" required/>-->
+          <!--            <span>PIN CODE</span>-->
+          <!--            <i></i>-->
+          <!--          </div>-->
+          <!--          <div class="inputradios" style="width: 500px">-->
+          <!--            <span>Gender :</span> <input type="radio" name="" id="Male" /><span-->
+          <!--              >Male</span-->
+          <!--            >-->
+          <!--            <input type="radio" name="" id="Female" /><span>Female</span>-->
+          <!--            <input type="radio" name="" id="not-to-say" />-->
+          <!--            <span>Prefer Not to Say</span>-->
+          <!--          </div>-->
+          <!--          <input type="text" name="gender" value="male" placeholder="gender">-->
+          <!--          <br />-->
+          <!--          <div class="inputfile">-->
+          <!--            <span style="margin-right:2rem;">Pan Card :</span>-->
+          <!--            <input type="file"  class="custom-file-input" name="pancard" id=""/>-->
+          <!--          </div>-->
+          <!--          <div class="inputfile">-->
+          <!--            <span style="margin-right:2rem;">Aadhar Card :</span>-->
+          <!--            <input type="file" class="custom-file-input"  name="aadharcard" id="" />-->
+          <!--          </div>-->
+          <br>
+          <button type="submit" class="submit" >Submit!!</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
